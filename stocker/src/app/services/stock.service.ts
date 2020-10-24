@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { IStock } from '../models/stock';
 import { Observable } from 'rxjs';
+import { IStockSymbol } from '../models/stocksymbol';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +14,8 @@ export class StockService {
 
   constructor(private http: HttpClient) { }
 
-  listStocks(): Observable<IStock[]>{
-    return this.http.get<IStock[]>(StockService.baseUrl + StockService.listEndpoint + '&token=' + StockService.apiKey);
+  listStocks(): Observable<IStockSymbol[]>{
+    return this.http.get<IStockSymbol[]>(StockService.baseUrl + StockService.listEndpoint + '&token=' + StockService.apiKey);
   }
   
 }

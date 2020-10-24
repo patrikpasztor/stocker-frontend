@@ -1,4 +1,4 @@
-export interface IStock {
+export interface IStockSymbol {
     currency: string,
     description: string,
     displaySymbol: string,
