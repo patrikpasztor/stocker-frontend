@@ -1,0 +1,32 @@
+<div class="table-responsive">
+    <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Owned amount</th>
+            <th scope="col">Value</th>
+            <th scope="col">Profit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let stock of user.ownedStocks">
+            <th scope="row">{{stock.symbol}}</th>
+            <td>{{stock.count}}</td>
+            <td></td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+          </tr>
+        </tbody>
+      </table>
+</div>

@@ -4,12 +4,14 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { StockListComponent } from './stock-list/stock-list.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { InvestmentsComponent } from './investments/investments.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    StockListComponent
+    NavbarComponent,
+    InvestmentsComponent
   ],
   imports: [
     BrowserModule,
