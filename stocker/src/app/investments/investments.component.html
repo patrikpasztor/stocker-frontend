@@ -3,7 +3,8 @@
         <thead class="thead-dark">
           <tr>
             <th scope="col">Name</th>
-            <th scope="col">Owned amount</th>
+            <th scope="col">Price</th>
+            <th scope="col">Owned</th>
             <th scope="col">Value</th>
             <th scope="col">Profit</th>
           </tr>
@@ -11,21 +12,10 @@
         <tbody>
           <tr *ngFor="let stock of user.ownedStocks">
             <th scope="row">{{stock.symbol}}</th>
+            <td>${{stock.currentPrice}}</td>
             <td>{{stock.count}}</td>
-            <td></td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
+            <td>${{getStockValue(stock.count,stock.currentPrice)}}</td>
+            <td>{{getProfitInPercent(stock.count,stock.buyingPrice,stock.currentPrice)}}%</td>
           </tr>
         </tbody>
       </table>

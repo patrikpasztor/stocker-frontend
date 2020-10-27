@@ -17,8 +17,14 @@ export class InvestmentsComponent implements OnInit {
     this.user = this.userService.getLoggedInUser();
   }
 
-  getStockValue(count: number, price: number) {
-    return count*price;
+  getStockValue(count: number, price: number) : string {
+    let value = count * price;
+    return value.toString();
+  }
+
+  getProfitInPercent(count: number, buyingPrice: number, currentPrice: number) : string {
+    let profit = (((count * currentPrice) / (count * buyingPrice)) - 1) * 100;
+    return profit < 0 ? profit.toPrecision(2) : '+' + profit.toPrecision(2);
   }
 
 }
