@@ -1,0 +1,20 @@
+<div class="table-responsive">
+    <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Weekly move</th>
+            <th scope="col">Daily move</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let stock of user.watchlistedStocks">
+            <th scope="row">{{stock.symbol}}</th>
+            <td>${{stock.currentPrice}}</td>
+            <td>{{stock.count}}</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+</div>
