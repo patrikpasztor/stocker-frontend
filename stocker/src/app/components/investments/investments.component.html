@@ -10,12 +10,12 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let stock of user.ownedStocks">
+          <tr *ngFor="let stock of stocks">
             <th scope="row">{{stock.symbol}}</th>
-            <td>${{stock.currentPrice}}</td>
-            <td>{{stock.count}}</td>
-            <td>${{getStockValue(stock.count,stock.currentPrice)}}</td>
-            <td>{{getProfitInPercent(stock.count,stock.buyingPrice,stock.currentPrice)}}%</td>
+            <td>{{stock.price}}</td>
+            <td>{{stock.amount}}</td>
+            <td>${{getStockValue(stock.amount,stock.price)}}</td>
+            <!-- <td>{{getProfitInPercent(stock.count,stock.buyingPrice,stock.currentPrice)}}%</td> -->
           </tr>
         </tbody>
       </table>

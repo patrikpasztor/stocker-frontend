@@ -1,0 +1,19 @@
+<form>
+    <div class="form-group">
+      <label for="stock">Available stocks</label>
+      <select (change)="stockChanged()" [(ngModel)]="selectedStock" name="stock" class="form-control" id="stock">
+        <option *ngFor="let stock of stocks">{{stock.symbol}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="amount">Amount</label>
+      <input [(ngModel)]="amount" (change)="calcSum()" name="amount" class="form-control" id="amount" type="number">
+    </div>
+    <div class="form-inline">
+      <label for="sum">Sum price</label>
+      <input type="text" readonly class="form-control-plaintext" id="sum" name="sum" value="{{'$' + sum}}">
+    </div>
+    <button type="button" class="btn-primary btn-dark" (click)="buy()">
+        Buy
+    </button>
+</form>

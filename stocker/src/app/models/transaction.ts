@@ -1,11 +1,13 @@
-import { TransactionType } from './enums/transactionType';
-
 export class Transaction {
-    symbol: string;
-    type: TransactionType;
-    price: number;
+    user: string;
+    stock: string;
+    amount: number;
+    stockPrice: number;
 
-    constructor(){
-
+    constructor(user: string, stock: string, amount: number, stockPrice: number){
+        this.user = user;
+        this.stock = stock;
+        this.amount = amount;
+        this.stockPrice = stockPrice;
     }
 }
