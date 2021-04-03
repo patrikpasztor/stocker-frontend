@@ -25,21 +25,4 @@ export class NavbarComponent implements OnInit {
     this.stocks = await this.stockService.getStocks().toPromise();
   }
 
-  async testStock() {
-    // let asyncResult1 : IStockQuote = await this.stockService.getStockPrice("TSLA").toPromise();
-    // //let asyncResult2 = await this.stockService.getStocks().toPromise();
-    // let asyncResult3 = await this.userService.getOwnedStocks("paspat").toPromise();
-    // let buyTran = new Transaction("paspat","NNIO",30.5);
-    // let sellTran = new Transaction("paspat","AMZN",0.5);
-    // let sellresult = await this.userService.sell(sellTran).toPromise();
-    // let buyresult = await this.userService.buy(buyTran).toPromise();
-    // //let currentPriceTest = this.stockService.getCurrentPrice("AAPL");
-    // console.log("Tesla price: "+asyncResult1.c);
-    // //console.log(asyncResult2);
-    // console.log(asyncResult3);
-    // console.log("sikeres eladás?: " + sellresult);
-    // console.log("sikeres vétel?: " + buyresult);
-    // console.log("Current tsla aapl test: " + asyncResult1.c);
-  }
-
 }

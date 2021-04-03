@@ -30,7 +30,7 @@ export class ShoppingComponent implements OnInit {
   }
 
   async updateStockPrice() {
-    this.stockPrice = await this.stockService.getStockPrice(this.selectedStock).toPromise();
+    this.stockPrice = await this.stockService.getStockPrice(this.selectedStock);
   }
 
   calcSum() {
@@ -44,8 +44,8 @@ export class ShoppingComponent implements OnInit {
 
   async buy() {
     console.log("megvesszük: " + this.selectedStock)
-    let stockPrice : IStockQuote = await this.stockService.getStockPrice(this.selectedStock).toPromise();
+    let stockPrice = await this.stockService.getStockPrice(this.selectedStock);
     let transaction : Transaction = new Transaction(this.user.name, this.selectedStock, this.amount, stockPrice.c);
-    let buyResult = await this.userService.buy(transaction).toPromise();
+    await this.userService.buy(transaction).toPromise();
   }
 }

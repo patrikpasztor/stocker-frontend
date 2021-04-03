@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { StockDTO } from '../models/stockDTO';
+import { Stock } from '../models/stock';
 import { Transaction } from '../models/transaction';
 import { User } from '../models/user';
 
@@ -29,6 +29,7 @@ export class UserService {
   static readonly listStocksEndpoint = "/listStocks/"
   static readonly buyEndpoint = "/buy"
   static readonly sellEndpoint = "/sell"
+  static readonly averageBuyPriceEndpoint = "/averageBuyPrice/"
 
   testUser: User = {
     name : 'paspat',
@@ -44,8 +45,8 @@ export class UserService {
     return this.testUser;
   }
 
-  getOwnedStocks(user: string) {
-    return this.http.get<StockDTO[]>(UserService.backendUrl + UserService.listStocksEndpoint + user, httpGetOptions);
+  async getOwnedStocks(user: string) {
+    return await this.http.get<Stock[]>(UserService.backendUrl + UserService.listStocksEndpoint + user, httpGetOptions).toPromise();
   }
 
   buy(transaction: Transaction) {
@@ -54,6 +55,10 @@ export class UserService {
 
   sell(transaction: Transaction) {
     return this.http.post(UserService.backendUrl + UserService.sellEndpoint, transaction, httpPostOptions);
+  }
+
+  async getAverageStockBuyPrice(user: string, stock: string) {
+    return await this.http.get<number>(UserService.backendUrl + UserService.averageBuyPriceEndpoint + user + '/' + stock, httpGetOptions).toPromise();
   }
 
 }

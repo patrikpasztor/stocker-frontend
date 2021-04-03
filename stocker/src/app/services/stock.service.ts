@@ -27,7 +27,7 @@ export class StockService {
     return this.http.get<IStockSymbol[]>(StockService.baseUrl + StockService.listEndpoint + StockService.apiKey);
   }
 
-  getStockPrice(symbol: string): Observable<IStockQuote>{
-    return this.http.get<IStockQuote>(StockService.baseUrl + StockService.quoteEndpoint + symbol + StockService.apiKey);
+  async getStockPrice(symbol: string) {
+    return await this.http.get<IStockQuote>(StockService.baseUrl + StockService.quoteEndpoint + symbol + StockService.apiKey).toPromise();
   }
 }
