@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../models/user';
 import { StockService } from '../../services/stock.service';
 import { UserService } from '../../services/user.service';
 import { IStockSymbol } from 'src/app/models/stocksymbol';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'navbar',
@@ -10,14 +10,11 @@ import { IStockSymbol } from 'src/app/models/stocksymbol';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-
   public stocks : IStockSymbol[] = [];
-  user: User;
 
-  constructor(private stockService: StockService, private userService: UserService) { }
+  constructor(private stockService: StockService, private userService: UserService, private authService: AuthenticationService) { }
 
   ngOnInit() {
-    this.user = this.userService.getLoggedInUser();
     this.fillStocks();
   }
 
@@ -25,4 +22,11 @@ export class NavbarComponent implements OnInit {
     this.stocks = await this.stockService.getStocks().toPromise();
   }
 
+  isUserLoggedIn() {
+    return this.authService.isUserLoggedIn();
+  }
+
+  getLoggedInUsername() {
+    return this.userService.getLoggedInUsername()
+  }
 }

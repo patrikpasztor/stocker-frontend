@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Stock } from 'src/app/models/stock';
 import { StockService } from 'src/app/services/stock.service';
-import { User } from '../../models/user';
 import { UserService } from '../../services/user.service';
 import { NgxSpinnerService } from "ngx-spinner";
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ModalSellComponent } from '../modal-sell/modal-sell.component';
+import { ModalSellComponent } from '../modals/modal-sell/modal-sell.component';
 
 @Component({
   selector: 'app-investments',
@@ -14,7 +13,6 @@ import { ModalSellComponent } from '../modal-sell/modal-sell.component';
 })
 export class InvestmentsComponent implements OnInit {
 
-  user: User;
   stocks: Stock[];
   loadCompleted: boolean = false;
 
@@ -22,7 +20,6 @@ export class InvestmentsComponent implements OnInit {
 
   async ngOnInit() {
     this.spinner.show();
-    this.user = this.userService.getLoggedInUser();
     await this.updateStockTable().then(v => {
       this.spinner.hide();
       this.loadCompleted = true;
@@ -32,13 +29,13 @@ export class InvestmentsComponent implements OnInit {
   }
 
   async updateStockTable() {
-    this.stocks = await this.userService.getOwnedStocks(this.user.name);
+    this.stocks = await this.userService.getOwnedStocks(this.userService.getLoggedInUsername());
     await this.updateStockPrice();
     await this.updateStockProfit();
   }
 
   async getOwnedStocks() {
-    this.stocks = await this.userService.getOwnedStocks(this.user.name);
+    this.stocks = await this.userService.getOwnedStocks(this.userService.getLoggedInUsername());
   }
 
   getStockValue(count: number, price: number) : string {
@@ -59,15 +56,15 @@ export class InvestmentsComponent implements OnInit {
 
   async updateStockProfit() {
     for(let s of this.stocks) {
-      let averageBuyPrice = await this.userService.getAverageStockBuyPrice(this.user.name, s.symbol);
+      let averageBuyPrice = await this.userService.getAverageStockBuyPrice(this.userService.getLoggedInUsername(), s.symbol);
       s.profit = (((s.amount * s.price) / (s.amount * averageBuyPrice)) - 1) * 100;
     }
   }
 
-  open(name: string, amount: number, price: number) {
+  openModal(name: string, amount: number, price: number) {
     const modalRef = this.modalService.open(ModalSellComponent);
     modalRef.componentInstance.stockName = name;
-    modalRef.componentInstance.userName = this.user.name;
+    modalRef.componentInstance.userName = this.userService.getLoggedInUsername();
     modalRef.componentInstance.ownedAmount = amount;
     modalRef.componentInstance.price = price;
     modalRef.result.then(async (result) => {

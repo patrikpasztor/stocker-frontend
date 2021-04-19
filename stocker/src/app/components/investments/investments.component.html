@@ -23,7 +23,7 @@
             <td *ngIf="loadCompleted">${{getStockValue(stock.amount,stock.price)}}</td>
             <td *ngIf="loadCompleted">{{getProfitInPercent(stock.profit)}}%</td>
             <td *ngIf="loadCompleted">
-              <button (click)="open(stock.symbol, stock.amount, stock.price)" class="btn btn-primary dark btn-dark sell-button" type="button">Sell</button>
+              <button (click)="openModal(stock.symbol, stock.amount, stock.price)" class="btn btn-primary dark btn-dark sell-button" type="button">Sell</button>
             </td>
           </tr>
         </tbody>

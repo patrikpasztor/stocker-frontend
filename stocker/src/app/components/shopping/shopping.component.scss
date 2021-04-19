@@ -1,0 +1,54 @@
+.shop-form {
+    margin-top: 20px;
+    margin-left: 30px;
+}
+
+.analyst-table {
+    margin-top: 30px
+}
+
+ .sub-header {
+     text-align: center;
+ }
+
+.table-fixed {
+  width: 100%;
+  tbody{
+    height:200px;
+    overflow-y:auto;
+    width: 100%;
+    }
+  thead,tbody,tr,td,th{
+    display:block;
+  }
+  tbody{
+    td{
+      text-align: center;
+      float:left;
+    }
+  }
+  thead {
+    tr{
+      th{
+        text-align: center;
+        float:left;
+      }
+    }
+  }
+}
+
+.warning-money {
+  color: red;
+}
+
+.add-money-btn {
+  margin-left: 15px;
+}
+
+.take-out-money-btn {
+  margin-left: 15px;
+}
+
+.row-money-btn {
+  margin-bottom: 20px;
+}

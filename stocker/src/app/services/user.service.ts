@@ -1,22 +1,24 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { MoneyTransferDTO } from '../models/moneyTransferDTO';
 import { Stock } from '../models/stock';
 import { Transaction } from '../models/transaction';
 import { User } from '../models/user';
+import { UserDTO } from '../models/userDTO';
 
-const httpGetOptions = {
-  headers: new HttpHeaders({
-    'Content-Type':  'application/json',
-    'Authorization': 'Basic ' + btoa('admin:admin')
-  })
-};
+// const httpGetOptions = {
+//   headers: new HttpHeaders({
+//     'Content-Type':  'application/json',
+//     'Authorization': 'Basic ' + btoa('admin:admin')
+//   })
+// };
 
 const httpPostOptions = {
-  headers: new HttpHeaders({
-    'Content-Type':  'application/json',
-    'Authorization': 'Basic ' + btoa('admin:admin')
-  }),
+  // headers: new HttpHeaders({
+  //   'Content-Type':  'application/json',
+  //   'Authorization': 'Basic ' + btoa('admin:admin')
+  // }),
   responseType: 'text' as 'json'
 };
 
@@ -25,28 +27,28 @@ const httpPostOptions = {
 })
 export class UserService {
 
-  static readonly backendUrl = "http://localhost:9090/api"
-  static readonly listStocksEndpoint = "/listStocks/"
-  static readonly buyEndpoint = "/buy"
-  static readonly sellEndpoint = "/sell"
-  static readonly averageBuyPriceEndpoint = "/averageBuyPrice/"
-
-  testUser: User = {
-    name : 'paspat',
-    balance: 12000,
-    unusedBalance: 3000,
-    ownedStocks : [{symbol: 'A', buyingPrice: 10, currentPrice: 11, count: 1.5}, {symbol: 'MSFT', buyingPrice: 20, currentPrice: 15, count:10},{symbol: 'AAPL', buyingPrice: 100, currentPrice: 111, count: 5},],
-    watchlistedStocks: [{symbol: 'ACCD', buyingPrice: 10, currentPrice: 11, count: 0}, {symbol: 'MSFT', buyingPrice: 20, currentPrice: 15, count: 0},{symbol: 'ADMP', buyingPrice: 100, currentPrice: 111, count: 0},]
-  }
+  static readonly backendUrl = "http://localhost:9090/api";
+  static readonly listStocksEndpoint = "/listStocks/";
+  static readonly buyEndpoint = "/buy";
+  static readonly sellEndpoint = "/sell";
+  static readonly averageBuyPriceEndpoint = "/averageBuyPrice/";
+  static readonly registerEndpoint = "/sign-up";
+  static readonly getBalanceEndpoint = "/balance/";
+  static readonly moneyTransferEndpoint = "/charge-balance";
+  static readonly getWatchlistEndpoint = "/watchlist/";
 
   constructor(private http: HttpClient) { }
 
-  getLoggedInUser() : User{
-    return this.testUser;
+  getLoggedInUsername() : string{
+    return sessionStorage.getItem('username');;
   }
 
   async getOwnedStocks(user: string) {
-    return await this.http.get<Stock[]>(UserService.backendUrl + UserService.listStocksEndpoint + user, httpGetOptions).toPromise();
+    return await this.http.get<Stock[]>(UserService.backendUrl + UserService.listStocksEndpoint + user).toPromise();
+  }
+
+  async getWatchlistedStocks(user: string) {
+    return await this.http.get<string[]>(UserService.backendUrl + UserService.getWatchlistEndpoint + user).toPromise();
   }
 
   buy(transaction: Transaction) {
@@ -58,7 +60,18 @@ export class UserService {
   }
 
   async getAverageStockBuyPrice(user: string, stock: string) {
-    return await this.http.get<number>(UserService.backendUrl + UserService.averageBuyPriceEndpoint + user + '/' + stock, httpGetOptions).toPromise();
+    return await this.http.get<number>(UserService.backendUrl + UserService.averageBuyPriceEndpoint + user + '/' + stock).toPromise();
   }
 
+  register(userDTO: UserDTO) {
+    return this.http.post(UserService.backendUrl + UserService.registerEndpoint, userDTO, httpPostOptions);
+  }
+
+  async getBalance(user: string) {
+    return await this.http.get<number>(UserService.backendUrl + UserService.getBalanceEndpoint + user).toPromise();
+  }
+
+  moneyTransfer(moneyTransfer: MoneyTransferDTO) {
+    return this.http.post(UserService.backendUrl + UserService.moneyTransferEndpoint, moneyTransfer, httpPostOptions);
+  }
 }

@@ -1,0 +1,20 @@
+<div class="container-fluid">  
+    <div class="row home">
+        <div class="col-md-12 splash">
+            <div>
+                <div class="intro">
+                    <h1>Welcome To Stocker</h1>
+                </div>
+                <div>
+                    <p>Stock trading made easier. Invest in your future.</p>
+                </div>
+                <div>
+                    <button *ngIf="!isUserLoggedIn()" type="button" routerLink="/login" class="btn btn-primary btn-light login-btn">Login</button>
+                </div>
+                <div>
+                    <button *ngIf="!isUserLoggedIn()" type="button" routerLink="/register" class="btn btn-primary btn-light">Register</button>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>

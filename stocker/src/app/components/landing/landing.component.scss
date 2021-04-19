@@ -1,0 +1,36 @@
+a:hover {
+    text-decoration: none;
+}
+
+.home {
+    height: 100vh;
+    background: url('../../../pexels-pixabay-56865.jpg') no-repeat center center;
+    background-size: 100% 100%;
+}
+
+.splash {
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center; /* align horizontal */
+    align-items: center; /* align vertical */
+}
+
+.intro {
+    padding-right: 15px;
+    padding-bottom: 15px;
+}
+
+.splash h1 {
+    color: #ffffff;
+}
+
+.splash p {
+    padding-top: 10px;
+    color: #ffffff;
+}
+
+.login-btn {
+    margin-bottom: 20px;
+}

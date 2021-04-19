@@ -1,0 +1,16 @@
+<div class="modal-header">
+    <h4 class="modal-title">Take out money from your account</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.close('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <label for="amount-to-transfer">Amount of money to take out ($)</label>
+      <input [(ngModel)]="amountToTransfer" name="amountToTransfer" class="form-control" id="amount-to-transfer" type="number">
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Cancel</button>
+    <button type="button" class="btn btn-outline-dark" (click)="takeOutMoney()">Transfer</button>
+  </div>
