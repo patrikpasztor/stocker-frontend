@@ -2,7 +2,7 @@
   <div class="shop-form col-3">
     <form>
       <div class="form-group">
-        <input type="text" readonly class="form-control-plaintext" id="available" name="available" value="Available for investment: {{'$' + availableMoney}}">
+        <input type="text" readonly class="form-control-plaintext" id="available" name="available" value="Available for investment: {{'$' + availableMoney.toFixed(2)}}">
         <div class="row row-money-btn">
           <button (click)="openAddMoney()" class="btn btn-primary btn-dark add-money-btn">Add money</button>
           <button (click)="openTakeOutMoney()" class="btn btn-primary btn-dark take-out-money-btn">Take out money</button>
@@ -18,7 +18,7 @@
       </div>
       <div class="form-inline">
         <label for="sum">Sum price</label>
-        <input type="text" readonly class="form-control-plaintext" id="sum" name="sum" value="{{'$' + sum}}">
+        <input type="text" readonly class="form-control-plaintext" id="sum" name="sum" value="{{'$' + sum.toFixed(2)}}">
         <span *ngIf="!enoughMoney()" class="warning-money">You do not have enough available money to invest in the selected options.</span>
         <span *ngIf="!amountMoreThanZero()" class="warning-money">You have to buy more than zero amount of a stock.</span>
       </div>

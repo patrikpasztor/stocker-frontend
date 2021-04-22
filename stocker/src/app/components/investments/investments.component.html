@@ -15,11 +15,11 @@
             <th scope="row">
               {{stock.symbol}}
             </th>
-            <td>{{stock.amount}}</td>
+            <td>{{stock.amount.toFixed(2)}}</td>
             <td *ngIf="!loadCompleted">Loading...</td>
             <td *ngIf="!loadCompleted">Loading...</td>
             <td *ngIf="!loadCompleted">Loading...</td>
-            <td *ngIf="loadCompleted">{{stock.price}}</td>
+            <td *ngIf="loadCompleted">{{stock.price.toFixed(2)}}</td>
             <td *ngIf="loadCompleted">${{getStockValue(stock.amount,stock.price)}}</td>
             <td *ngIf="loadCompleted">{{getProfitInPercent(stock.profit)}}%</td>
             <td *ngIf="loadCompleted">

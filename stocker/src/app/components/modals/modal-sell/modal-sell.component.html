@@ -11,11 +11,11 @@
     <button type="button" class="btn btn-outline-dark" (click)="allOut()">All out</button>
     <div class="form-group-row">
       <label for="stockPrice">Price per stock</label>
-      <input type="text" readonly class="form-control-plaintext" id="stockPrice" value="{{'$' + price}}">
+      <input type="text" readonly class="form-control-plaintext" id="stockPrice" value="{{'$' + price.toFixed(2)}}">
     </div>
     <div class="form-group-row">
       <label for="sum">Sum</label>
-      <input type="text" readonly class="form-control-plaintext" id="sum" value="{{'$' + sum}}">
+      <input type="text" readonly class="form-control-plaintext" id="sum" value="{{'$' + sum.toFixed(2)}}">
     </div>
   </form>
   

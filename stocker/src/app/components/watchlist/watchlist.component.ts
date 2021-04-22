@@ -55,12 +55,12 @@ export class WatchlistComponent implements OnInit {
 
   getWeeklyMove(stock: WatchlistStock) {
     let move = ((stock.price / stock.weekAgoOpenPrice) - 1) * 100;
-    return move < 0 ? move.toPrecision(2) : '+' + move.toPrecision(2);
+    return move < 0 ? move.toFixed(2) : '+' + move.toFixed(2);
   }
 
   getDailyMove(stock: WatchlistStock) {
     let move = ((stock.price / stock.todayOpenPrice) - 1) * 100;
-    return move < 0 ? move.toPrecision(2) : '+' + move.toPrecision(2);
+    return move < 0 ? move.toFixed(2) : '+' + move.toFixed(2);
   }
 
 }

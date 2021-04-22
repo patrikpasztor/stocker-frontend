@@ -40,11 +40,11 @@ export class InvestmentsComponent implements OnInit {
 
   getStockValue(count: number, price: number) : string {
     let value = count * price;
-    return value.toPrecision(4);
+    return value.toFixed(2);
   }
 
   getProfitInPercent(profit: number) : string {
-    return profit < 0 ? profit.toPrecision(2) : '+' + profit.toPrecision(2);
+    return profit < 0 ? profit.toFixed(2) : '+' + profit.toFixed(2);
   }
 
   async updateStockPrice() {
