@@ -19,6 +19,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ModalTakeOutMoneyComponent } from './components/modals/modal-take-out-money/modal-take-out-money.component';
+import { ModalWatchComponent } from './components/modals/modal-watch/modal-watch.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { ModalTakeOutMoneyComponent } from './components/modals/modal-take-out-m
     RegisterComponent,
     LogoutComponent,
     ModalAddMoneyComponent,
-    ModalTakeOutMoneyComponent
+    ModalTakeOutMoneyComponent,
+    ModalWatchComponent
   ],
   imports: [
     BrowserModule,

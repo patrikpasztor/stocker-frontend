@@ -6,6 +6,7 @@ import { Stock } from '../models/stock';
 import { Transaction } from '../models/transaction';
 import { User } from '../models/user';
 import { UserDTO } from '../models/userDTO';
+import { WatchDTO } from '../models/watchDTO';
 
 // const httpGetOptions = {
 //   headers: new HttpHeaders({
@@ -36,6 +37,8 @@ export class UserService {
   static readonly getBalanceEndpoint = "/balance/";
   static readonly moneyTransferEndpoint = "/charge-balance";
   static readonly getWatchlistEndpoint = "/watchlist/";
+  static readonly getWatchEndpoint = "/watch";
+  static readonly getStopWatchEndpoint = "/stop-watch";
 
   constructor(private http: HttpClient) { }
 
@@ -73,5 +76,13 @@ export class UserService {
 
   moneyTransfer(moneyTransfer: MoneyTransferDTO) {
     return this.http.post(UserService.backendUrl + UserService.moneyTransferEndpoint, moneyTransfer, httpPostOptions);
+  }
+
+  watch(watchDTO: WatchDTO) {
+    return this.http.post(UserService.backendUrl + UserService.getWatchEndpoint, watchDTO, httpPostOptions);
+  }
+
+  stopWatch(watchDTO: WatchDTO) {
+    return this.http.post(UserService.backendUrl + UserService.getStopWatchEndpoint, watchDTO, httpPostOptions);
   }
 }

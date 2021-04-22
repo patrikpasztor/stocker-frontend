@@ -6,6 +6,9 @@
             <th scope="col">Current price</th>
             <th scope="col">Weekly move</th>
             <th scope="col">Daily move</th>
+            <th scope="col">
+              <button class="btn btn-primary btn-light add-btn" (click)="openAddModal()">Add stock</button>
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -14,6 +17,9 @@
             <td>{{stock.price}}</td>
             <td *ngIf="loadCompleted">{{getWeeklyMove(stock)}}%</td>
             <td *ngIf="loadCompleted">{{getDailyMove(stock)}}%</td>
+            <td *ngIf="loadCompleted">
+              <button class="btn btn-primary btn-dark delete-btn" (click)="remove(stock.symbol)">Delete</button>
+            </td>
           </tr>
         </tbody>
       </table>
