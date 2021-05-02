@@ -13,6 +13,10 @@
         </ng-select>
       </div>
       <div class="form-group">
+        <label for="price">Price per stock</label>
+        <input type="text" readonly class="form-control-plaintext" id="price" name="price" value="{{'$' + stockPrice.c.toFixed(2)}}">
+      </div>
+      <div class="form-group">
         <label for="amount">Amount</label>
         <input [(ngModel)]="amount" (change)="calcSum()" name="amount" class="form-control" id="amount" type="number">
       </div>
