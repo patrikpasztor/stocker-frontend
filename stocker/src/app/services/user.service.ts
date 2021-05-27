@@ -1,6 +1,5 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { MoneyTransferDTO } from '../models/moneyTransferDTO';
 import { Stock } from '../models/stock';
 import { Transaction } from '../models/transaction';
